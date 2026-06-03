@@ -1,8 +1,3 @@
-"""
-portzap.ui.footer
------------------
-Slim status bar showing key bindings and live feedback.
-"""
 from __future__ import annotations
 
 from textual.widgets import Static
@@ -20,8 +15,6 @@ _HINTS = (
 
 
 class StatusBar(Static):
-    """Bottom bar: key hints + live status messages."""
-
     DEFAULT_CSS = """
     StatusBar {
         dock: bottom;

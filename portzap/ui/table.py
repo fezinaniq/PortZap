@@ -1,21 +1,15 @@
-"""
-portzap.ui.table
-----------------
-The main DataTable widget that shows all open ports.
-"""
 from __future__ import annotations
 
 from typing import List, Optional
 
 from rich.text import Text
-from textual.app import ComposeResult
 from textual.widgets import DataTable
-from textual.reactive import reactive
 
 from ..core.models import PortEntry
 
 
-COLUMNS = [
+# (header label, column width) — order matches add_row() calls in populate()
+COLUMNS: list[tuple[str, int]] = [
     ("PORT",    6),
     ("PROTO",   6),
     ("STATUS",  13),
@@ -28,9 +22,7 @@ COLUMNS = [
 
 
 class PortTable(DataTable):
-    """DataTable subclass pre-configured for port display."""
-
-    BINDINGS = []  # handled by parent App
+    BINDINGS = []  # key handling lives in the parent App
 
     def on_mount(self) -> None:
         self.cursor_type = "row"
@@ -39,12 +31,8 @@ class PortTable(DataTable):
             self.add_column(label, width=width, key=label.lower())
 
     def populate(self, entries: List[PortEntry], query: str = "") -> None:
-        """Clear and re-fill the table, optionally filtering by query."""
         self.clear()
-
-        filtered = self._filter(entries, query)
-
-        for entry in filtered:
+        for entry in self._filter(entries, query):
             status_text = Text(entry.display_status, style=f"bold {entry.status_color}")
             self.add_row(
                 str(entry.port),
@@ -73,7 +61,6 @@ class PortTable(DataTable):
         ]
 
     def selected_entry(self, entries: List[PortEntry], query: str = "") -> Optional[PortEntry]:
-        """Return the PortEntry currently under the cursor."""
         filtered = self._filter(entries, query)
         try:
             row_index = self.cursor_row

@@ -38,4 +38,4 @@ Homepage = "https://github.com/fezinaniq/portzap"
 Issues = "https://github.com/fezinaniq/portzap/issues"
 
 [tool.hatch.build.targets.wheel]
-packages = ["portzap/portzap"]
+packages = ["portzap"]
