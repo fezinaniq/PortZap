@@ -1,6 +1,7 @@
 # portzap 🔌
 
 [![PyPI](https://img.shields.io/pypi/v/portzap)](https://pypi.org/project/portzap/)
+[![GitHub Stars](https://img.shields.io/github/stars/fezinaniq/portzap)](https://github.com/fezinaniq/portzap)
 
 > **Because `lsof -i :3000` is not a personality.**
 
