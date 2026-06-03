@@ -5,7 +5,7 @@
 
 > **Because `lsof -i :3000` is not a personality.**
 
-A beautiful terminal UI that shows every process running on your machine's network ports — live, searchable, and killable in one keypress. No more googling commands. No more chaining `lsof | grep | kill`. Just open `portzap` and see everything.
+A Interactive terminal UI that shows every process running on your machine's network ports — live, searchable, and killable in one keypress. No more googling commands. No more chaining `lsof | grep | kill`. Just open `portzap` and see everything.
 
 ![Demo](https://raw.githubusercontent.com/fezinaniq/portzap/main/screenshots/portzap.png)
 
