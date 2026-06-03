@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "portzap"
-version = "1.0.0"
+version = "1.0.1"
 description = "A beautiful TUI port manager — see and kill processes on any port without googling lsof"
 readme = "README.md"
 license = { text = "MIT" }
