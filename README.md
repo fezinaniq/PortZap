@@ -92,7 +92,7 @@ Then the ritual:
 |---|---|
 | Linux | ✅ Fully supported |
 | macOS | ✅ Fully supported |
-| Windows | 🔜 Coming in v1.1 |
+| Windows | ✅ Fully supported (run as Administrator) |
 
 ---
 
