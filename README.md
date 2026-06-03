@@ -4,7 +4,7 @@
 
 A beautiful terminal UI that shows every process running on your machine's network ports — live, searchable, and killable in one keypress. No more googling commands. No more chaining `lsof | grep | kill`. Just open `portzap` and see everything.
 
-![Demo](screenshots/portzap.png)
+![Demo](https://raw.githubusercontent.com/fezinaniq/portzap/main/screenshots/portzap.png)
 
 ---
 
