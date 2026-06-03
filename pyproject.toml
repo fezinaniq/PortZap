@@ -1,0 +1,41 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "portzap"
+version = "1.0.0"
+description = "A beautiful TUI port manager — see and kill processes on any port without googling lsof"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+keywords = ["tui", "ports", "developer-tools", "cli", "textual", "networking"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: System :: Networking",
+    "Topic :: System :: Systems Administration",
+    "Topic :: Utilities",
+]
+dependencies = [
+    "textual>=0.50.0",
+    "psutil>=5.9.0",
+]
+
+[project.scripts]
+portzap = "portzap.main:run"
+
+[project.urls]
+Homepage = "https://github.com/fezinaniq/portzap"
+Issues = "https://github.com/fezinaniq/portzap/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["portzap/portzap"]
