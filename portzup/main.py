@@ -1,5 +1,5 @@
 """
-portzap.main
+portzup.main
 ------------
 Entry point. Runs the Textual application.
 """
@@ -29,7 +29,7 @@ from .ui.table import PortTable
 # ─────────────────────────── Help Modal ────────────────────────────
 
 HELP_TEXT = """\
-[bold cyan]portzap[/bold cyan] — keybindings
+[bold cyan]portzup[/bold cyan] — keybindings
 
 [bold]↑ / ↓[/bold]      Navigate the port list
 [bold]/[/bold]          Open search / filter
@@ -38,7 +38,7 @@ HELP_TEXT = """\
 [bold]i[/bold]          Toggle process detail pane
 [bold]r[/bold]          Force refresh
 [bold]s[/bold]          Cycle sort (port → pid → name → port)
-[bold]q[/bold]          Quit portzap
+[bold]q[/bold]          Quit portzup
 [bold]?[/bold]          Show this help
 
 [dim]Colours: [green]LISTEN[/green]  [cyan]ESTABLISHED[/cyan]  [yellow]TIME_WAIT[/yellow]  [magenta]CLOSE_WAIT[/magenta][/dim]
@@ -110,10 +110,10 @@ class KillConfirmScreen(ModalScreen[bool]):
 SORT_KEYS = ["port", "pid", "process_name"]
 
 
-class PortzapApp(App):
-    """portzap — beautiful TUI port manager."""
+class PortzupApp(App):
+    """portzup — beautiful TUI port manager."""
 
-    TITLE = "portzap 🔌"
+    TITLE = "portzup 🔌"
     CSS = """
     Screen {
         layout: vertical;
@@ -290,7 +290,7 @@ class PortzapApp(App):
 
 
 def run() -> None:
-    app = PortzapApp()
+    app = PortzupApp()
     app.run()
 
 

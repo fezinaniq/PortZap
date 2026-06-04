@@ -24,6 +24,6 @@ def kill_process(pid: int) -> tuple[bool, str]:
     except psutil.NoSuchProcess:
         return False, f"PID {pid} no longer exists"
     except psutil.AccessDenied:
-        return False, "Permission denied — try running portzap with sudo"
+        return False, "Permission denied — try running portzup with sudo"
     except Exception as exc:
         return False, f"Unexpected error: {exc}"

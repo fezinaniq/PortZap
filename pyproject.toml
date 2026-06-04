@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "portzap"
+name = "portzup"
 version = "1.0.3"
 description = "A beautiful TUI port manager — see and kill processes on any port without googling lsof"
 readme = "README.md"
@@ -31,11 +31,11 @@ dependencies = [
 ]
 
 [project.scripts]
-portzap = "portzap.main:run"
+portzup = "portzup.main:run"
 
 [project.urls]
-Homepage = "https://github.com/fezinaniq/portzap"
-Issues = "https://github.com/fezinaniq/portzap/issues"
+Homepage = "https://github.com/fezinaniq/portzup"
+Issues = "https://github.com/fezinaniq/portzup/issues"
 
 [tool.hatch.build.targets.wheel]
-packages = ["portzap"]
+packages = ["portzup"]

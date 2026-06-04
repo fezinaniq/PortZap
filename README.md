@@ -1,33 +1,33 @@
-# portzap 🔌
+# portzup 🔌
 
-[![PyPI](https://img.shields.io/pypi/v/portzap)](https://pypi.org/project/portzap/)
-[![GitHub Stars](https://img.shields.io/github/stars/fezinaniq/portzap)](https://github.com/fezinaniq/portzap)
+[![PyPI](https://img.shields.io/pypi/v/portzup)](https://pypi.org/project/portzup/)
+[![GitHub Stars](https://img.shields.io/github/stars/fezinaniq/portzup)](https://github.com/fezinaniq/portzup)
 
 > **Because `lsof -i :3000` is not a personality.**
 
-A Interactive terminal UI that shows every process running on your machine's network ports — live, searchable, and killable in one keypress. No more googling commands. No more chaining `lsof | grep | kill`. Just open `portzap` and see everything.
+A Interactive terminal UI that shows every process running on your machine's network ports — live, searchable, and killable in one keypress. No more googling commands. No more chaining `lsof | grep | kill`. Just open `portzup` and see everything.
 
-![Demo](https://raw.githubusercontent.com/fezinaniq/portzap/main/screenshots/portzap.png)
+![Demo](https://raw.githubusercontent.com/fezinaniq/portzup/main/screenshots/portzup.png)
 
 ---
 
 ## Install
 
 ```bash
-pip install portzap
+pip install portzup
 ```
 
 Then run:
 
 ```bash
-portzap
+portzup
 ```
 
 That's it. Zero to running in under 30 seconds.
 
 ---
 
-## Why portzap?
+## Why portzup?
 
 You know this moment:
 
@@ -43,7 +43,7 @@ Then the ritual:
 4. Forget it by next week
 5. Google it again
 
-**portzap ends this loop.**
+**portzup ends this loop.**
 
 ---
 
@@ -115,8 +115,8 @@ Then the ritual:
 PRs are welcome! The project is MIT licensed.
 
 ```
-portzap/
-├── portzap/
+portzup/
+├── portzup/
 │   ├── main.py          # Textual App — entry point
 │   ├── ui/
 │   │   ├── table.py     # Port table widget
