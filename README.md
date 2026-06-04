@@ -2,7 +2,6 @@
 
 [![PyPI](https://img.shields.io/pypi/v/portzup)](https://pypi.org/project/portzup/)
 [![GitHub Stars](https://img.shields.io/github/stars/fezinaniq/portzup)](https://github.com/fezinaniq/portzup)
-
 > **Because `lsof -i :3000` is not a personality.**
 
 A Interactive terminal UI that shows every process running on your machine's network ports — live, searchable, and killable in one keypress. No more googling commands. No more chaining `lsof | grep | kill`. Just open `portzup` and see everything.
