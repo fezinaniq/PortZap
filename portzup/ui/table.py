@@ -8,7 +8,6 @@ from textual.widgets import DataTable
 from ..core.models import PortEntry
 
 
-# (header label, column width) — order matches add_row() calls in populate()
 COLUMNS: list[tuple[str, int]] = [
     ("PORT",    6),
     ("PROTO",   6),
@@ -20,19 +19,63 @@ COLUMNS: list[tuple[str, int]] = [
     ("REMOTE",  22),
 ]
 
+# Maps column key → PortEntry attribute name
+COL_TO_ATTR: dict[str, str] = {
+    "port":    "port",
+    "proto":   "protocol",
+    "status":  "status",
+    "pid":     "pid",
+    "process": "process_name",
+    "user":    "username",
+    "local":   "local_address",
+    "remote":  "remote_address",
+}
+
+
+def _make_sort_key(attr: str):
+    """Returns a sort key function for the given PortEntry attribute."""
+    def key(entry: PortEntry):
+        val = getattr(entry, attr, "")
+        return val if isinstance(val, int) else str(val).lower()
+    return key
+
 
 class PortTable(DataTable):
     BINDINGS = []  # key handling lives in the parent App
 
+    sort_col: str = "port"
+    sort_asc: bool = True
+
     def on_mount(self) -> None:
         self.cursor_type = "row"
         self.zebra_stripes = True
+        self._refresh_columns()
+
+    def _refresh_columns(self) -> None:
+        """Clear everything and re-add column headers with the current sort indicator."""
+        self.clear(columns=True)
         for label, width in COLUMNS:
-            self.add_column(label, width=width, key=label.lower())
+            key = label.lower()
+            if key == self.sort_col:
+                indicator = " ▲" if self.sort_asc else " ▼"
+                display = f"{label}{indicator}"
+            else:
+                display = label
+            self.add_column(display, width=width, key=key)
+
+    def set_sort(self, col: str, asc: bool) -> None:
+        """Update sort state and refresh column headers."""
+        self.sort_col = col
+        self.sort_asc = asc
+        self._refresh_columns()
 
     def populate(self, entries: List[PortEntry], query: str = "") -> None:
-        self.clear()
-        for entry in self._filter(entries, query):
+        """Filter, sort, and render entries into the table."""
+        self.clear()  # rows only — columns keep their indicators
+        filtered = self._filter(entries, query)
+        attr = COL_TO_ATTR.get(self.sort_col, "port")
+        filtered = sorted(filtered, key=_make_sort_key(attr), reverse=not self.sort_asc)
+        for entry in filtered:
             status_text = Text(entry.display_status, style=f"bold {entry.status_color}")
             self.add_row(
                 str(entry.port),
@@ -61,7 +104,13 @@ class PortTable(DataTable):
         ]
 
     def selected_entry(self, entries: List[PortEntry], query: str = "") -> Optional[PortEntry]:
-        filtered = self._filter(entries, query)
+        """Return the PortEntry under the cursor, respecting current sort + filter."""
+        attr = COL_TO_ATTR.get(self.sort_col, "port")
+        filtered = sorted(
+            self._filter(entries, query),
+            key=_make_sort_key(attr),
+            reverse=not self.sort_asc,
+        )
         try:
             row_index = self.cursor_row
             if 0 <= row_index < len(filtered):
